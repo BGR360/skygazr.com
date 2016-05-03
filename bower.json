@@ -1,0 +1,13 @@
+{
+  "name": "skygazr",
+  "description": "Find the best places to watch the stars",
+  "version": "1.0.0",
+  "license": "MIT",
+  "dependencies": {
+    "angular": "~1.3.8",
+    "angular-route": "~1.3.8",
+    "html5-boilerplate": "~4.3.0",
+    "firebase": "2.2.2",
+    "angularfire": "~1.0.0"
+  }
+}
