@@ -1,0 +1,27 @@
+.FillPage {
+    height: 100vh;
+}
+
+.FillParentHeight {
+    height: 100%;
+}
+
+.FillParentWidth {
+    width: 100%;
+}
+
+.SidebarBox {
+    height: 33.33333vh;
+    background: #00b3ee;
+    border: solid #0000FF;
+    border-width: 2px 4px 2px 4px;
+}
+
+.BigContent {
+    background: #a6e1ec;
+}
+
+.VerticalAlign {
+    /*display: flex;
+    align-items: center;*/
+}
