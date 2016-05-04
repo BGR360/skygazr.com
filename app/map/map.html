@@ -3,7 +3,7 @@
         default-style="false"
         data-draggable="true"
         map-type-id="MapTypeId.HYBRID">
-    <div ng-if="loggedIn" ng-repeat="pin in pins">
-        <marker position="[{{pin.location.latitude}}, {{pin.location.longitude}}]"></marker>
-    </div>
+
+    <div ui-view></div>
+
 </ng-map>

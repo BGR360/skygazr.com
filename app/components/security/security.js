@@ -12,11 +12,11 @@
     // to be used by authRequired() in the services below
     var securedRoutes = [];
 
-    angular.module('skygazr.security', ['ngRoute', 'firebase.auth', 'skygazr.config'])
+    angular.module('skygazr.security', ['ui.router', 'firebase.auth', 'skygazr.config'])
 
-        .config(['$routeProvider', function ($routeProvider) {
+        .config(['$stateProvider', function ($routeProvider) {
             // routes which are not in our map are redirected to /home
-            //$routeProvider.otherwise({redirectTo: '/home'});
+            //$stateProvider.otherwise({redirectTo: '/home'});
         }])
 
         /**
@@ -28,18 +28,18 @@
          * dependency injection (see AuthCtrl), or rejects the promise if user is not logged in,
          * forcing a redirect to the /login page
          */
-        .config(['$routeProvider', function ($routeProvider) {
+        .config(['$stateProvider', function ($stateProvider) {
             // credits for this idea: https://groups.google.com/forum/#!msg/angular/dPr9BpIZID0/MgWVluo_Tg8J
             // unfortunately, a decorator cannot be use here because they are not applied until after
             // the .config calls resolve, so they can't be used during route configuration, so we have
             // to hack it directly onto the $routeProvider object
-            $routeProvider.whenAuthenticated = function (path, route) {
+            $stateProvider.whenAuthenticated = function (path, route) {
                 securedRoutes.push(path); // store all secured routes for use with authRequired() below
                 route.resolve = route.resolve || {};
                 route.resolve.user = ['Auth', function (Auth) {
                     return Auth.$requireAuth();
                 }];
-                $routeProvider.when(path, route);
+                $stateProvider.when(path, route);
                 return this;
             }
         }])

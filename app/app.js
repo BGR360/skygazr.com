@@ -10,10 +10,8 @@ var app = angular.module('skygazr', ['routeStyles', 'ngMap',
     'skygazr.map'
 ])
 
-    .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.otherwise({
-            redirectTo: '/home'
-        });
+    .config(['$urlRouterProvider', function ($urlRouterProvider) {
+        $urlRouterProvider.otherwise('/home');
     }])
 
     .run(['$rootScope', 'Auth', function($rootScope, Auth) {
