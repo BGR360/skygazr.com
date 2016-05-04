@@ -8,4 +8,11 @@ Ben Reeves - University of Michigan
 
 ## Work in Progress
 
-IT GON' BE GOOOOOOOOD
+Check out these preliminary screenshots... IT GON' BE GOOOOOOOOD
+
+<img src="http://i.imgur.com/IlRNbbQ.jpg">
+
+<img src="http://i.imgur.com/PlCXPyy.png" height="600">
+
+<img src="http://i.imgur.com/TZlGHd1.png" height="800">
+
