@@ -3,10 +3,12 @@
 
 'use strict';
 
-var app = angular.module('skygazr', [
-        'skygazr.config',
-        'skygazr.security'
-    ])
+var app = angular.module('skygazr', ['routeStyles', 'ngMap',
+    'skygazr.config',
+    'skygazr.security',
+    'skygazr.home',
+    'skygazr.map'
+])
 
     .config(['$routeProvider', function ($routeProvider) {
         $routeProvider.otherwise({

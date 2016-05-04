@@ -15,7 +15,7 @@ angular.module('skygazr.config', [])
 
     // your Firebase data URL goes here, no trailing slash
     .constant('FBURL', 'https://torrid-heat-6774.firebaseio.com/')
-
+        
     // double check that the app has been configured before running it and blowing up space and time
     .run(['FBURL', '$timeout', function (FBURL, $timeout) {
         if (FBURL.match('//INSTANCE.firebaseio.com')) {

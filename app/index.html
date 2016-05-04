@@ -1,107 +1,52 @@
 <!doctype html>
 <html lang="en" ng-app="skygazr">
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Skygazr | Home</title>
-  <meta name="description" content="Find the best places to watch the stars">
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Skygazr</title>
+    <meta name="description" content="Find the best places to watch the stars">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/normalize.css">
-  <link rel="stylesheet" href="bower_components/html5-boilerplate/css/main.css">
-  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/home.css"/>
+    <link rel="stylesheet" href="/app/bower_components/html5-boilerplate/css/normalize.css">
+    <link rel="stylesheet" href="/app/bower_components/html5-boilerplate/css/main.css">
+    <link rel="stylesheet" href="/app/bower_components/bootstrap/dist/css/bootstrap.min.css">
 
-  <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="bower_components/html5-boilerplate/js/vendor/modernizr-2.6.2.min.js"></script>
 </head>
 
 <body ng-cloak>
 
-  <div class="container-fluid">
-    <div class="row LeftContent FillPageHeight">
+<div ng-view></div>
 
-      <div class="col-xs-12 col-md-8 col-xs-center">
-        <!--<div class="row"><div class="col-xs-12 JustifyCenter">-->
-
-          <div class="row LeftContentSpacer"></div>
-
-          <div class="row">
-            <div class="col-xs-12 text-xs-center">
-              <h1>Skygazr</h1>
-              <p>Find the best places to watch the stars.</p>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="col-xs-12 text-xs-center">
-              <a href="map/map.html" class="btn btn-secondary">Get Started</a>
-              <button type="button" class="btn btn-primary">Sign In</button>
-            </div>
-          </div>
-
-          <div class="row LeftContentSpacer"></div>
-
-        <!--</div></div>-->
-      </div>
-
-
-      <div class="col-xs-12 col-md-4">
-
-        <div class="row row-xs-center SidebarBox">
-          <div class="col-xs-12 text-xs-center">
-            <h5>View Light Pollution Data</h5>
-            <p>
-              Skygazr is built around a detailed light pollution map so you
-              can see what areas near you have the least amount of light pollution.
-            </p>
-          </div>
-        </div>
-
-        <div class="row row-xs-center SidebarBox">
-          <div class="col-xs-12 text-xs-center">
-            <h5>Mark Your Favorite Spots</h5>
-            <p>
-              Found a spot that looks good for stargazing?
-              Put a pin in it and save it for later!
-            </p>
-          </div>
-        </div>
-
-        <div class="row row-xs-center SidebarBox">
-          <div class="col-xs-12 text-xs-center">
-            <h5>Get Directions</h5>
-            <p>
-              Once you've found the best stargazing spot,
-              you can use the built-in Google Maps Directions
-              service to figure out how to get there.
-            </p>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  
-
-  <!-- In production use:
+<!-- In production use:
 <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.3.x/angular.min.js"></script>
 <script src="//cdn.firebase.com/js/client/2.2.x/firebase.js"></script>
 <script src="//cdn.firebase.com/libs/angularfire/1.0.x/angularfire.min.js"></script>
 -->
-  <script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/firebase/firebase.js"></script>
-  <script src="bower_components/angularfire/dist/angularfire.js"></script>
-  <script src="bower_components/jquery/jquery.min.js"></script>
-  <script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/angular-route-styles/route-styles.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.js"></script>
+<script src="bower_components/jquery/jquery.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/ngmap/build/scripts/ng-map.min.js"></script>
+
+<!-- Google Maps JavaScript API -->
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDgiKNUE8Xz4d3_0Ft8YVxUiWvo__1re90"
+        type="text/javascript">
+</script>
 
 
-  <script src="app.js"></script>
-  <script src="config.js"></script>
+<script src="app.js"></script>
+<script src="config.js"></script>
 
-  <script src="components/auth/auth.js"></script>
-  <script src="components/firebase.utils/firebase.utils.js"></script>
-  <script src="components/security/security.js"></script>
+<script src="components/auth/auth.js"></script>
+<script src="components/firebase.utils/firebase.utils.js"></script>
+<script src="components/security/security.js"></script>
+
+<script src="home/home.js"></script>
+<script src="map/map.js"></script>
 
 </body>
 </html>
