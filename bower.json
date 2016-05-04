@@ -10,6 +10,7 @@
     "bootstrap": "4.0.0-alpha.2",
     "jquery": "1.9.1",
     "firebase": "2.2.2",
-    "angularfire": "~1.0.0"
+    "angularfire": "~1.0.0",
+    "angular-route-styles": "*"
   }
 }
