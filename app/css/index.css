@@ -1,5 +1,9 @@
-.FillPage {
-    height: 100vh;
+h1, h2, h3, h4, h5, h6 {
+    color: #fff;
+}
+
+.FillPageHeight {
+    min-height: 100vh;
 }
 
 .FillParentHeight {
@@ -11,17 +15,35 @@
 }
 
 .SidebarBox {
-    height: 33.33333vh;
-    background: #00b3ee;
-    border: solid #0000FF;
+    min-height: 33.33333vh;
+    background: rgba(27, 48, 105, 0.6);
+    border: solid rgb(17, 33, 66);
     border-width: 2px 4px 2px 4px;
 }
 
-.BigContent {
-    background: #a6e1ec;
+.LeftContent {
+    background: url("/app/img/starry-night.jpg") no-repeat center fixed;
+    background-color: #4F3A53;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #fff;
 }
 
-.VerticalAlign {
-    /*display: flex;
-    align-items: center;*/
+.LeftContentSpacer {
+    min-height: 30vh;
+}
+
+.FlexStretch {
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    -ms-grid-row-align: stretch;
+    align-items: stretch;
+}
+
+.JustifyCenter {
+    -webkit-justify-content: center;
+    justify-content: center;
 }
