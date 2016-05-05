@@ -7,7 +7,8 @@ var app = angular.module('skygazr', ['routeStyles', 'ngMap',
     'skygazr.config',
     'skygazr.security',
     'skygazr.home',
-    'skygazr.map'
+    'skygazr.map',
+    'skygazr.account'
 ])
 
     .config(['$urlRouterProvider', function ($urlRouterProvider) {
@@ -18,5 +19,6 @@ var app = angular.module('skygazr', ['routeStyles', 'ngMap',
         // track status of authentication
         Auth.$onAuth(function(user) {
             $rootScope.loggedIn = !!user;
+            console.log("Auth status changed:", $rootScope.loggedIn);
         });
     }]);

@@ -56,7 +56,7 @@
                 css: 'map/map.css'
             })
             .state('map.loggedIn', {
-                url: '/map/loggedIn',
+                url: '/loggedIn',
                 templateUrl: 'map/map.loggedIn.html',
                 controller: 'MapLoggedInCtrl',
                 css: 'map/map.css'

@@ -33,8 +33,16 @@ h1, h2, h3, h4, h5, h6 {
     color: #fff;
 }
 
-.LeftContentSpacer {
+.Spacer-30 {
     min-height: 30vh;
+}
+
+.Spacer-10 {
+    height: 10vh;
+}
+
+.Spacer-2-5 {
+    height: 2.5vh;
 }
 
 .FlexStretch {
@@ -48,4 +56,8 @@ h1, h2, h3, h4, h5, h6 {
 .JustifyCenter {
     -webkit-justify-content: center;
     justify-content: center;
+}
+
+#login-form button {
+    margin: 0.5em;
 }

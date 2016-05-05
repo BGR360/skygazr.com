@@ -32,14 +32,14 @@
             // credits for this idea: https://groups.google.com/forum/#!msg/angular/dPr9BpIZID0/MgWVluo_Tg8J
             // unfortunately, a decorator cannot be use here because they are not applied until after
             // the .config calls resolve, so they can't be used during route configuration, so we have
-            // to hack it directly onto the $routeProvider object
+            // to hack it directly onto the $stateProvider object
             $stateProvider.whenAuthenticated = function (path, route) {
                 securedRoutes.push(path); // store all secured routes for use with authRequired() below
                 route.resolve = route.resolve || {};
                 route.resolve.user = ['Auth', function (Auth) {
                     return Auth.$requireAuth();
                 }];
-                $stateProvider.when(path, route);
+                $stateProvider.state(path, route);
                 return this;
             }
         }])

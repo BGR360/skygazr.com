@@ -1,0 +1,84 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-12">
+            <h2>Edit Your Profile</h2>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form>
+                <fieldset class="form-group">
+                    <legend>Profile</legend>
+
+                    <fieldset class="form-group">
+                        <label for="nameInput">Name:</label>
+                        <input id="nameInput" type="text" name="name" ng-model="profile.name"/>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="emailInput">Email:</label>
+                        <p id="emailInput" class="form-control-static">{{profile.email}}</p>
+                    </fieldset>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form>
+                <fieldset class="form-group">
+                    <legend>Change Password</legend>
+
+                    <fieldset class="form-group">
+                        <label for="oldPassInput">Old Password:</label>
+                        <input id="oldPassInput" type="password" ng-keypress="clear()" ng-model="oldpass"/>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="newPassInput">New Password:</label>
+                        <input id="newPassInput" type="password" ng-keypress="clear()" ng-model="newpass"/>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="confirmPassInput">Confirm New Password:</label>
+                        <input id="confirmPassInput" type="password" ng-keypress="clear()" ng-model="confirm"/>
+                    </fieldset>
+
+                    <button class="btn btn-secondary" ng-click="changePassword(oldpass, newpass, confirm)">Change Password</button>
+
+                    <p class="alert alert-danger" ng-show="err">{{err}}</p>
+                    <p class="alert alert-success" ng-show="msg">{{msg}}</p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <form>
+                <fieldset class="form-group">
+                    <legend>Change Email</legend>
+
+                    <fieldset class="form-group">
+                        <label for="newEmailInput">New Email:</label>
+                        <input id="newEmailInput" type="text" ng-keypress="clear()" ng-model="newEmail"/>
+                    </fieldset>
+
+                    <fieldset class="form-group">
+                        <label for="newEmailPassInput">Password:</label>
+                        <input id="newEmailPassInput" type="password" ng-keypress="clear()" ng-model="pass"/>
+                    </fieldset>
+
+                    <button class="btn btn-secondary" ng-click="changeEmail(pass, newEmail)">Update Email</button>
+
+                    <p class="alert alert-danger" ng-show="emailerr">{{emailerr}}</p>
+                    <p class="alert alert-success" ng-show="emailmsg">{{emailmsg}}</p>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button class="btn btn-warning" ng-click="logout()">Log Out</button>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,26 @@
+<div class="row Spacer-30"></div>
+
+<div class="row">
+    <div class="col-xs-12 text-xs-center">
+        <h1>Skygazr</h1>
+        <p>Find the best places to watch the stars.</p>
+    </div>
+</div>
+
+<div class="row" ng-show="loggedIn">
+    <div class="col-xs-12 text-xs-center">
+        <p>Welcome!</p>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 text-xs-center">
+        <a ng-show="loggedIn" ui-sref="account" class="btn btn-secondary">Account</a>
+        <a ng-show="loggedIn" ui-sref="map" class="btn btn-primary">View Map</a>
+
+        <a ng-hide="loggedIn" ui-sref="map" class="btn btn-secondary">Get Started</a>
+        <a ng-hide="loggedIn" ui-sref="home.login" class="btn btn-primary">Sign In / Register</a>
+    </div>
+</div>
+
+<div class="row Spacer-30"></div>
