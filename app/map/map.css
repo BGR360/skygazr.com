@@ -4,8 +4,25 @@ html, body {
     padding: 0;
 }
 
-body > div {
-    height: 100%;
-    margin: 0;
-    padding: 0;
+.JustifyEnd {
+    justify-content: flex-end;
+}
+
+.Scrollable {
+    overflow-y: scroll;
+}
+
+#map {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#overlay {
+    height: 100vh;
+}
+
+#pinsMenu {
+    margin-top: .9375rem;
+    max-height: 94vh;
 }

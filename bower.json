@@ -12,6 +12,7 @@
     "firebase": "2.2.2",
     "angularfire": "~1.0.0",
     "angular-route-styles": "*",
-    "ngmap": "^1.17.3"
+    "ngmap": "^1.17.3",
+    "responsive-bootstrap-toolkit": "responsive-toolkit#^2.5.1"
   }
 }
