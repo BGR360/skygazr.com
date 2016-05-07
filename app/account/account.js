@@ -10,7 +10,7 @@
 
     var app = angular.module('skygazr.account', ['firebase', 'firebase.utils', 'firebase.auth', 'ui.router']);
 
-    app.controller('AccountCtrl', function($scope, $state, $timeout, Auth, fbutil, user, $firebaseObject) {
+    app.controller('AccountCtrl', function($scope, $state, $timeout, Auth, fbutil, user, $firebaseObject, PinsService) {
         var unbind;
         // create a 3-way binding with the user profile object in Firebase
         var profile = $firebaseObject(fbutil.ref('users', user.uid));
@@ -21,6 +21,9 @@
             if( unbind ) { unbind(); }
             profile.$destroy();
             Auth.$unauth();
+            PinsService.reset();
+            
+            // Hacky because there were issues with the home page
             $timeout(function() {
                 $state.go('home.login');
             }, 1000);
