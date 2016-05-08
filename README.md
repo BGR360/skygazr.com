@@ -1,4 +1,4 @@
-# skygazr.com
+# [skygazr.com](https://skygazr.firebaseapp.com)
 Find the best places to watch the stars
 
 ## Creators
