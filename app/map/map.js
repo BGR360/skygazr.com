@@ -63,6 +63,9 @@
     });
 
     app.controller('MapCtrl', function($scope, $state, user, PinsService, NgMap) {
+
+        $scope.markers = [];
+
         resizeMap();
 
         $scope.showPinMenu = function() {
@@ -107,9 +110,30 @@
                     createPin(map, event.latLng);
                 });
 
+                // Load the user's saved pins and display them on the map
+                $scope.pins.$loaded().then(function(pins) {
+                    console.log("pins:", pins);
+                    for (var i = 0; i < pins.length; i++) {
+                        var pin = pins[i];
+                        var latlng = new google.maps.LatLng(
+                            pin.location.latitude,
+                            pin.location.longitude
+                        );
+                        placeMarker(map, latlng, pins.$keyAt(i));
+                    }
+                });
+
+                // Watch the array of pins for child_removed events
+                $scope.pins.$watch(function(event) {
+                    if (event.event == "child_removed") {
+                        //removeMarkerForPin(event.key);
+                    }
+                });
+
                 // Destroy all the pins when this controller loses scope
                 $scope.$on("$destroy", function() {
                     google.maps.event.removeListener(clickListener);
+                    removeAllMarkers();
                 });
             }).catch(function(error) {
                 console.log(error);
@@ -128,7 +152,7 @@
 
         function createPin(map, location) {
             var newPin = {
-                "name": "pin",
+                "name": "New Pin",
                 "color": "#000",
                 "location": {
                     "latitude": location.lat(),
@@ -136,17 +160,81 @@
                 },
                 "notes": ""
             };
-            $scope.pins.$add(newPin);
+            $scope.pins.$add(newPin).then(function(ref) {
+                placeMarker(map, location, ref.key());
+            });
+        }
+
+        function placeMarker(map, location, pinId) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                draggable: true,
+                animation: google.maps.Animation.DROP
+            });
+
+            marker.pinId = pinId;
+            marker.addListener('dragend', function() {
+                var pin = $scope.pins.$getRecord(pinId);
+                pin.location = {
+                    latitude: marker.getPosition().lat(),
+                    longitude: marker.getPosition().lng()
+                };
+                $scope.pins.$save(pin).catch(function(error) {
+                    console.log(error);
+                });
+            });
+            marker.addListener('click', function() {
+                $state.go('map.editPin', {pinId: pinId});
+            });
+
+            $scope.markers.push(marker);
+        }
+
+        function removeAllMarkers() {
+            var markers = $scope.markers;
+            for (var i in markers) {
+                if (markers.hasOwnProperty(i)) {
+                    var currentMarker = markers[i];
+                    currentMarker.setMap(null);
+                    markers[i] = null;
+                }
+            }
+            markers = [];
         }
     });
 
-    app.controller('MapPinEditCtrl', function($scope, $stateParams, user, PinsService) {
-        var pins = PinsService.getPinsForUser(user.uid);
-        $scope.pin = pins.$getRecord($stateParams.pinId);
+    app.controller('MapPinEditCtrl', function($scope, $state, $stateParams) {
+        $scope.pin = $scope.pins.$getRecord($stateParams.pinId);
+
+        $scope.removePin = function(pin) {
+            removeMarkerForPin(pin);
+            $scope.pins.$remove(pin).then(function(ref) {
+                removeMarkerForPin(ref.key());
+                $state.go('map.pinsList');
+            }).catch(function(error) {
+                console.log(error);
+            });
+        };
 
         $scope.$on('$destroy', function() {
-            $scope.pins.$save($stateParams.pinId);
+            $scope.pins.$save($scope.pin);
         });
+
+        function removeMarkerForPin(pinId) {
+            var markers = $scope.markers;
+            for (var i in markers) {
+                if (markers.hasOwnProperty(i)) {
+                    var marker = markers[i];
+                    if (marker.pinId == pinId) {
+                        marker.setMap(null);
+                        markers[i] = null;
+                        markers.splice(i, 1);
+                        break;
+                    }
+                }
+            }
+        }
     });
 
 })(angular);
