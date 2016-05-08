@@ -68,7 +68,7 @@
             $scope.err = null;
             Auth.$authWithPassword({email: email, password: pass}, {rememberMe: rememberMe})
                 .then(function (/* user */) {
-                    $state.go('map');
+                    $state.go('map.pinsList');
                 }, function (err) {
                     $scope.err = errMessage(err);
                 });

@@ -4,10 +4,6 @@ html, body {
     padding: 0;
 }
 
-.JustifyEnd {
-    justify-content: flex-end;
-}
-
 .Scrollable {
     overflow-y: scroll;
 }

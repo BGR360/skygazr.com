@@ -1,0 +1,23 @@
+<div class="card-block">
+    <h4 class="card-title">
+        Pins
+        <button class="btn hidden-md-up" ng-click="closePinMenu()">
+            <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+        </button>
+    </h4>
+</div>
+<div class="card-block">
+    <form>
+        <fieldset class="form-group">
+            <input id="nameInput" type="text" ng-model="pin.name">
+        </fieldset>
+        <p>
+            Latitude: {{pin.location.latitude}}<br>
+            Longitude: {{pin.location.longitude}}
+        </p>
+        <fieldset class="form-group">
+            <label for="notesInput">Notes:</label>
+            <textarea id="notesInput" class="form-control" ng-model="pin.notes"></textarea>
+        </fieldset>
+    </form>
+</div>

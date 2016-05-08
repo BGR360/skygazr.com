@@ -11,6 +11,7 @@
         $stateProvider
             .state('map', {
                 url: '/map',
+                abstract: true,
                 templateUrl: 'map/map.html',
                 controller: 'MapCtrl',
                 resolve: {
@@ -22,6 +23,17 @@
                         return Auth.$waitForAuth();
                     }]
                 },
+                css: 'map/map.css'
+            })
+            .state('map.pinsList', {
+                url: '/pins',
+                templateUrl: 'map/map.pinsList.html',
+                css: 'map/map.css'
+            })
+            .state('map.editPin', {
+                url: '/pins/:pinId',
+                templateUrl: 'map/map.editPin.html',
+                controller: 'MapPinEditCtrl',
                 css: 'map/map.css'
             });
     }]);
@@ -53,6 +65,14 @@
     app.controller('MapCtrl', function($scope, $state, user, PinsService, NgMap) {
         resizeMap();
 
+        $scope.showPinMenu = function() {
+            $('#pinsMenu').show();
+        };
+
+        $scope.hidePinMenu = function() {
+            $('#pinsMenu').hide();
+        };
+
         // Hide the pins menu if device screen is too small
         (function($, viewport){
             viewport.use('bootstrap4');
@@ -67,16 +87,12 @@
 
             function showOrHidePinsMenu() {
                 if ( viewport.is('>=md') ) {
-                    $('#pinsMenu').show();
+                    $scope.showPinMenu();
                 } else if ( viewport.is('<md') ) {
-                    $('#pinsMenu').hide();
+                    $scope.hidePinMenu();
                 }
             }
         })(jQuery, ResponsiveBootstrapToolkit);
-
-        $scope.closePinMenu = function() {
-            $('#pinsMenu').hide();
-        };
 
         $scope.loggedIn = !!user;
         
@@ -122,6 +138,15 @@
             };
             $scope.pins.$add(newPin);
         }
+    });
+
+    app.controller('MapPinEditCtrl', function($scope, $stateParams, user, PinsService) {
+        var pins = PinsService.getPinsForUser(user.uid);
+        $scope.pin = pins.$getRecord($stateParams.pinId);
+
+        $scope.$on('$destroy', function() {
+            $scope.pins.$save($stateParams.pinId);
+        });
     });
 
 })(angular);

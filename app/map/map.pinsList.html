@@ -1,0 +1,12 @@
+<div class="card-block">
+    <button class="btn hidden-md-up" ng-click="closePinMenu()">
+        <i class="fa fa-times-circle-o" aria-hidden="true"></i>
+    </button>
+    <h4 class="card-title">Pins</h4>
+</div>
+<ul class="list-group list-group-flush">
+    <a ui-sref="map.editPin({pinId: pin.$id})" class="list-group-item" ng-repeat="pin in pins">
+        <i class="fa fa-map-marker" aria-hidden="true"></i>
+        {{pin.name}}
+    </a>
+</ul>
