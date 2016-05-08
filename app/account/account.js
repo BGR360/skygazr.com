@@ -10,6 +10,19 @@
 
     var app = angular.module('skygazr.account', ['firebase', 'firebase.utils', 'firebase.auth', 'ui.router']);
 
+    app.config(['$stateProvider', function($stateProvider) {
+        // require user to be authenticated before they can access this page
+        // this is handled by the .whenAuthenticated method declared in
+        // components/router/router.js
+        $stateProvider
+            .whenAuthenticated('account', {
+                url: '/account',
+                templateUrl: 'account/account.html',
+                controller: 'AccountCtrl',
+                css: 'account/account.css'
+            });
+    }]);
+
     app.controller('AccountCtrl', function($scope, $state, $timeout, Auth, fbutil, user, $firebaseObject, PinsService) {
         var unbind;
         // create a 3-way binding with the user profile object in Firebase
@@ -73,17 +86,5 @@
             $scope.emailmsg = null;
         }
     });
-
-    app.config(['$stateProvider', function($stateProvider) {
-        // require user to be authenticated before they can access this page
-        // this is handled by the .whenAuthenticated method declared in
-        // components/router/router.js
-        $stateProvider
-            .whenAuthenticated('account', {
-                url: '/account',
-                templateUrl: 'account/account.html',
-                controller: 'AccountCtrl'
-            });
-    }]);
 
 })(angular);

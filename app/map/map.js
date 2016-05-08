@@ -216,6 +216,10 @@
                 console.log(error);
             });
         };
+        
+        $scope.goBack = function() {
+            $state.go('map.pinsList');
+        };
 
         $scope.$on('$destroy', function() {
             $scope.pins.$save($scope.pin);

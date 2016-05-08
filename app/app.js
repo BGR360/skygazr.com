@@ -12,6 +12,7 @@ var app = angular.module('skygazr', ['routeStyles', 'ngMap',
 ])
 
     .config(['$urlRouterProvider', function ($urlRouterProvider) {
+        $urlRouterProvider.when('/map', '/map/pins');
         $urlRouterProvider.otherwise('/home');
     }])
 
