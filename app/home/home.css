@@ -24,7 +24,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .LeftContent {
-    background: url("/app/img/starry-night.jpg") no-repeat center fixed;
+    background: url("http://i.imgur.com/rqwpGqF.jpg") no-repeat center fixed;
     background-color: #4F3A53;
     -webkit-background-size: cover;
     -moz-background-size: cover;

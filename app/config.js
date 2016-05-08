@@ -14,7 +14,7 @@ angular.module('skygazr.config', [])
     .constant('loginRedirectPath', '/login')
 
     // your Firebase data URL goes here, no trailing slash
-    .constant('FBURL', 'https://torrid-heat-6774.firebaseio.com/')
+    .constant('FBURL', 'https://skygazr.firebaseio.com/')
         
     // double check that the app has been configured before running it and blowing up space and time
     .run(['FBURL', '$timeout', function (FBURL, $timeout) {
