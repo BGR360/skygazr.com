@@ -65,15 +65,22 @@
     app.controller('MapCtrl', function($scope, $state, user, PinsService, NgMap) {
 
         $scope.markers = [];
+        $scope.hasOpenedPinMenu = false;
 
         resizeMap();
 
-        $scope.showPinMenu = function() {
+        $scope.showPinMenu = function(force) {
             $('#pinsMenu').show();
+            if (force) {
+                $scope.hasOpenedPinMenu = true;
+            }
         };
 
-        $scope.hidePinMenu = function() {
-            $('#pinsMenu').hide();
+        $scope.hidePinMenu = function(force) {
+            if (!$scope.hasOpenedPinMenu || force) {
+                $('#pinsMenu').hide();
+                $scope.hasOpenedPinMenu = false;
+            }
         };
 
         // Hide the pins menu if device screen is too small
@@ -206,6 +213,7 @@
 
     app.controller('MapPinEditCtrl', function($scope, $state, $stateParams) {
         $scope.pin = $scope.pins.$getRecord($stateParams.pinId);
+        $scope.showPinMenu(true);
 
         $scope.removePin = function(pin) {
             removeMarkerForPin(pin);
